@@ -20,7 +20,7 @@ pipeline {
                   script {
                          try {
                              sh 'whoami'
-                             docker kill -s HUP nginx 
+                             sh 'docker kill -s HUP nginx'
                          }
                          catch(Exception err_file) {
                              echo "Permission denied!"
