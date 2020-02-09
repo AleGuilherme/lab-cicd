@@ -1,10 +1,17 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
+        stage('BlueGreenFileContent') {
             steps {
-               sh "echo 'Hello World'"
+                  script {
+                         try {
+                             env.FILENAME = readFile 'BlueGreenControl'
+                             echo "${env.FILENAME}"
+                         }
+                         catch(Exception err_file) {
+                             echo "File BlueGreenControl Not Found"
+                         }
+                  }
             }
         }
     }
