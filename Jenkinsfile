@@ -19,7 +19,7 @@ pipeline {
             steps {
                   script {
                          try {
-                             sh 'rm -f /root/nginx-conf.d/hello.conf && cp hello.conf /root/nginx-conf.d/hello.conf'
+                             sh 'cp -f hello.conf /root/nginx-conf.d/hello.conf'
                              docker kill -s HUP nginx 
                          }
                          catch(Exception err_file) {
