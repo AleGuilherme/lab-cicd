@@ -19,7 +19,7 @@ pipeline {
             steps {
                   script {
                          try {
-                             sh 'cp -f hello.conf /root/nginx-conf.d/hello.conf'
+                             sh 'whoami'
                              docker kill -s HUP nginx 
                          }
                          catch(Exception err_file) {
