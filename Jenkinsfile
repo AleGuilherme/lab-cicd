@@ -23,7 +23,7 @@ pipeline {
                              docker kill -s HUP nginx 
                          }
                          catch(Exception err_file) {
-                             echo "Permission Denied!"
+                             echo "Permission denied!"
                          }
                   }
             }
