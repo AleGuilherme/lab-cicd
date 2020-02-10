@@ -19,12 +19,11 @@ pipeline {
             steps {
                   script {
                          try {
-                             sh 'whoami'
-                             sh 'touch /tmp/ale_tes'
+                             sh 'docker cp jenkins-master:/var/jenkins_home/workspace/lab-cicd_master/hello.conf /root/nginx-conf.d/hello.conf
                              sh 'docker kill -s HUP nginx'
                          }
                          catch(Exception err_file) {
-                             echo "Permission denied!"
+                             echo "Erro no BlueGreen!"
                          }
                   }
             }
