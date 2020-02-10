@@ -23,7 +23,7 @@ pipeline {
                              sh 'docker kill -s HUP nginx'
                          }
                          catch(Exception err_file) {
-                             echo "Err no BlueGreen!"
+                             echo "Erro no BlueGreen!"
                          }
                   }
             }
