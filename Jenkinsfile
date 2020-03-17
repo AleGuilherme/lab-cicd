@@ -19,8 +19,8 @@ pipeline {
              if (env.FILENAME.equals("green")) {
                 steps {
                   script {
-                           [[ (docker ps -f name=hello-BLUE -q) ]] && [[ (docker stop hello-BLUE && docker rm hello-BLUE) ]]
-                           docker run --name hello-BLUE -v /root/app/blue/hello.py:/usr/local/src/hello.py --net=example -d python:3 python /usr/local/src/hello.py)  
+                         sh  [[ (docker ps -f name=hello-BLUE -q) ]] && [[ (docker stop hello-BLUE && docker rm hello-BLUE) ]]
+                         sh  docker run --name hello-BLUE -v /root/app/blue/hello.py:/usr/local/src/hello.py --net=example -d python:3 python /usr/local/src/hello.py)  
                          }
                  }
              }
