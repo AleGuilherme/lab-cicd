@@ -19,7 +19,7 @@ pipeline {
             steps {
                   script {
                          try {
-                             sh 'rm -f /nginx-conf.d/hello.conf && cp /var/jenkins_home/workspace/lab-cicd_master/nginx/hello.conf /nginx/'
+                             sh 'rm -f /nginx/hello.conf && cp /var/jenkins_home/workspace/lab-cicd_master/nginx/hello.conf /nginx/hello.conf'
                              sh 'docker kill -s HUP nginx'
                          }
                          catch(Exception err_file) {
