@@ -6,7 +6,6 @@ pipeline {
             steps {
                   script {
                          try {
-                             #def app_type = env.FILENAME = readFile 'BlueGreenControl'
                              def app_type = readFile 'BlueGreenControl'
                              echo "${app_type}"
                          }
