@@ -6,8 +6,9 @@ pipeline {
             steps {
                   script {
                          try {
-                             def app_type = env.FILENAME = readFile 'BlueGreenControl'
-                             echo "${env.FILENAME}"
+                             #def app_type = env.FILENAME = readFile 'BlueGreenControl'
+                             def app_type = readFile 'BlueGreenControl'
+                             echo "${app_type}"
                          }
                          catch(Exception err_file) {
                              echo "File BlueGreenControl Not Found"
@@ -19,11 +20,11 @@ pipeline {
         stage('Build') {
             steps {
                    script {
-                          if (app_type == "green") {
+                          if (${app_type} == "green") {
                              sh  '[[ (docker ps -f name=hello-GREEN -q) ]] && [[ (docker stop hello-GREEN && docker rm hello-GREEN) ]]'
                              sh  'docker run --name hello-GREEN -v /root/app/blue/hello.py:/usr/local/src/hello.py --net=example -d python:3 python /usr/local/src/hello.py'  
                           } else {
-                              echo "green Not equal - ${env.FILENAME}"
+                              echo "green Not equal - ${app_type}"
                             }
                    }
             }
