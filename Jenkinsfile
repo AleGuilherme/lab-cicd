@@ -8,7 +8,7 @@ pipeline {
                   script {
                          try {
                             // String app_type = "${sh(script: 'cat BlueGreenControl', returnStdout: true)}"
-                            def app_type = "green"
+                            def String app_type = "green"
                              echo "${app_type}"
                          }
                          catch(Exception err_file) {
