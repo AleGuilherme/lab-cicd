@@ -6,7 +6,8 @@ pipeline {
             steps {
                   script {
                          try {
-                            String app_type = "${sh(script: 'cat BlueGreenControl', returnStdout: true)}"
+                            // String app_type = "${sh(script: 'cat BlueGreenControl', returnStdout: true)}"
+                            def app_type = "green"
                              echo "${app_type}"
                          }
                          catch(Exception err_file) {
@@ -19,7 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                    script {
-                          if (app_type.equalsIgnoreCase(green)) {
+                          if (app_type.equals(green)) {
                              sh  '[[ (docker ps -f name=hello-GREEN -q) ]] && [[ (docker stop hello-GREEN && docker rm hello-GREEN) ]]'
                              sh  'docker run --name hello-GREEN -v /root/app/blue/hello.py:/usr/local/src/hello.py --net=example -d python:3 python /usr/local/src/hello.py'  
                           } else {
