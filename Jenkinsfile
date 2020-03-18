@@ -6,7 +6,7 @@ pipeline {
             steps {
                   script {
                          try {
-                             def app_type = readFile 'BlueGreenControl'
+                             app_type = "${sh(script: 'cat BlueGreenControl', returnStdout: true)}"
                              echo "${app_type}"
                          }
                          catch(Exception err_file) {
