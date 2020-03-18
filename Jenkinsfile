@@ -23,7 +23,7 @@ pipeline {
                              sh  '[[ (docker ps -f name=hello-GREEN -q) ]] && [[ (docker stop hello-GREEN && docker rm hello-GREEN) ]]'
                              sh  'docker run --name hello-GREEN -v /root/app/blue/hello.py:/usr/local/src/hello.py --net=example -d python:3 python /usr/local/src/hello.py'  
                           } else {
-                              echo "Not equal"
+                              echo "green Not equal - ${env.FILENAME}"
                             }
                    }
             }
