@@ -5,8 +5,8 @@ pipeline {
             steps {
                   script {
                          try {
-                            env.FILENAME = readFile 'BlueGreenControl'
-                            echo "${env.FILENAME}"
+                              env.FILENAME = readFile 'BlueGreenControl'
+                              echo "${env.FILENAME}"
                          }
                          catch(Exception err_file) {
                              echo "File BlueGreenControl Not Found"
