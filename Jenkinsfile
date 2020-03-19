@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                   steps {
+                   step {
                           sh("docker rm -f hello-${env.FILENAME} || true")
                           sh("docker run --name hello-${env.FILENAME} -v /root/app/${env.FILENAME}/hello.py:/usr/local/src/hello.py --net=example -d python:3 python /usr/local/src/hello.py")
                           sh("rm -f /nginx/hello.conf")
