@@ -1,6 +1,8 @@
 pipeline {
-    env.FILENAME = readFile 'BlueGreenControl'
     agent any
+    environment {
+         env.FILENAME = readFile 'BlueGreenControl'
+    }
     stages {
         stage('BlueGreenFileContent') {
             steps {
