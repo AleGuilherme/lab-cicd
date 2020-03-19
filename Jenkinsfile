@@ -1,3 +1,4 @@
+env.FILENAME = readFile 'BlueGreenControl'
 pipeline {
     agent any
     stages {
@@ -5,7 +6,7 @@ pipeline {
             steps {
                   script {
                          try {
-                             env.FILENAME = readFile 'BlueGreenControl'
+                             #env.FILENAME = readFile 'BlueGreenControl'
                              echo "${env.FILENAME}"
                          }
                          catch(Exception err_file) {
@@ -15,7 +16,7 @@ pipeline {
             }
         }
 
-        stage('RedirectBlueGreen') {
+        stage('Build') {
             steps {
                   script {
                          try {
