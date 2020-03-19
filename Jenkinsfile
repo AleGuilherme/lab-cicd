@@ -4,7 +4,7 @@ pipeline {
     }
     
     environment { 
-         app_type = sh (returnStdout: true, script: 'cat BlueGreenControl'
+         app_type = sh (returnStdout: true, script: 'cat BlueGreenControl')
     }
 
     stages {
