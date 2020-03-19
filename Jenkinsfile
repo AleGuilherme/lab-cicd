@@ -26,11 +26,8 @@ pipeline {
                              //sh "rm -f /nginx/hello.conf && cp /var/jenkins_home/workspace/lab-cicd_master/nginx/hello.conf /nginx/hello.conf"
                              //sh "docker kill -s HUP nginx"
                          }
-                         catch(Exception err_file) {
-                             echo "Erro no_BlueGreen!"
-                         }
                   }
             }
-        }
-    }
+          }
+      }
 }
