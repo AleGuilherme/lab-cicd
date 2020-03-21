@@ -21,7 +21,7 @@ class TestB3Z(unittest.TestCase):
     def test_startup_equipe(self):
         rv = self.app_b3z.get('/startup/equipe')
         self.assertEqual(rv.status, '200 OK')
-        self.assertEqual(rv.data, b'ALEXANDRE GUILHERME\nADRIANO CESAR MARTINS\nVITOR CHALUPPE RADI\n')
+        self.assertEqual(rv.data, b'ALEXANDRE GUILHERME<br>ADRIANO CESAR MARTINS<br>VITOR CHALUPPE RADI<br>')
 
     def test_startup_din(self):
         name = '<rota_dinamica>'
