@@ -12,7 +12,7 @@ def startup_name():
 
 @app.route('/startup/equipe') # rota equipe B3Z
 def startup_equipe():
-    return 'ALEXANDRE GUILHERME\nADRIANO CESAR MARTINS\nVITOR CHALUPPE RADI\n'
+    return 'ALEXANDRE GUILHERME<br>ADRIANO CESAR MARTINS<br>VITOR CHALUPPE RADI<br>'
 
 @app.route('/startup/<rota_dinamica>') # rota dinamica
 def startup_din(rota_dinamica):
