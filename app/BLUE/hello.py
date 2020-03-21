@@ -1,9 +1,15 @@
-from wsgiref.simple_server import make_server
-#print('Hello, world!')
-GREETING = b'Hello, BLUE! (v2.0) \n'
-#
-def hello(environ, start_response):
-        start_response('200 OK', [('Content-Type', 'text/plain')])
-        return [GREETING]
+#!/usr/bin/env python
+from flask import Flask
+app = Flask(__name__)
 
-make_server('0.0.0.0', 9000, hello).serve_forever()
+@app.route('/')
+@app.route('/hello/')
+def hello_world():
+    return 'Hello World!\n'
+
+@app.route('/hello/<username>') # dynamic route
+def hello_user(username):
+    return 'Why Hello %s!\n' % username
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')     # open for everyone
