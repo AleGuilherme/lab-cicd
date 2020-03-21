@@ -21,7 +21,7 @@ pipeline {
 
        stage('Test') {
             steps {
-                   sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/${app_type}/test_b3z.py /app/teste/test_b3z.py'
+                   sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/test_b3z.py /app/teste/test_b3z.py'
                    sh 'docker run --rm -v /root/app/teste:/app_b3z_dir -w /app_b3z_dir python_app python test_b3z.py'
             }
             post {
