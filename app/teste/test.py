@@ -2,25 +2,30 @@
 import unittest
 import app
 
-class TestHello(unittest.TestCase):
+class TestB3Z(unittest.TestCase):
 
     def setUp(self):
         app.app.testing = True
         self.app = app.app.test_client()
 
-    def test_hello(self):
+    def test_inicio(self):
         rv = self.app.get('/')
         self.assertEqual(rv.status, '200 OK')
-        self.assertEqual(rv.data, b'Hello World!\n')
+        self.assertEqual(rv.data, b'Rota Inicio!\n')
 
-    def test_hello_hello(self):
-        rv = self.app.get('/hello/')
+    def test_startup_name(self):
+        rv = self.app.get('/startup')
         self.assertEqual(rv.status, '200 OK')
-        self.assertEqual(rv.data, b'Hello World!\n')
+        self.assertEqual(rv.data, b'B3Z - COMBATE A DENGUE!\n')
 
-    def test_hello_name(self):
-        name = 'Simon'
-        rv = self.app.get(f'/hello/{name}')
+    def test_startup_equipe(self):
+        rv = self.app.get('/startup/equipe')
+        self.assertEqual(rv.status, '200 OK')
+        self.assertEqual(rv.data, b'ALEXANDRE GUILHERME\nADRIANO CESAR MARTINS\nVITOR CHALUPPE RADI\n')
+
+    def test_startup_din(self):
+        name = '<rota_dinamica>'
+        rv = self.app.get(f'/startup/{name}')
         self.assertEqual(rv.status, '200 OK')
         self.assertIn(bytearray(f"{name}", 'utf-8'), rv.data)
 

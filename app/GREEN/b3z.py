@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/') # rota inicial
 def startup_inicio():
-    return 'Rota Inicio!\n'
+    return 'Pagina Inicial - B3Z!\n'
 
 @app.route('/startup') # rota nome startup
 def startup_name():
@@ -19,4 +19,4 @@ def startup_din(rota_dinamica):
     return 'Rota dinamica B3Z %s!\n' % rota_dinamica
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0') # open for everyone
+    app.run(host='0.0.0.0')

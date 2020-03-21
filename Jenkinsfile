@@ -9,22 +9,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo "${app_type}"
-                sh 'docker rm -f hello-${app_type} || true'
-                sh 'rm -f /app/${app_type}/hello.py'
-                sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/${app_type}/hello.py /app/${app_type}/hello.py'
-                sh 'docker run --name hello-${app_type} -v /root/app/${app_type}/hello.py:/usr/local/src/hello.py --net=example -d python:3 python /usr/local/src/hello.py'
-                sh 'rm -f /nginx/hello.conf'
-                sh 'cp /var/jenkins_home/workspace/lab-cicd_master/nginx/hello.conf /nginx/hello.conf'
+                sh 'docker rm -f B3Z-${app_type} || true'
+                sh 'rm -f /app/${app_type}/b3z.py || true'
+                sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/${app_type}/b3z.py /app/${app_type}/b3z.py'
+                sh 'docker run --name B3Z-${app_type} -v /root/app/${app_type}:/app_b3z -w /app_b3z--net=example -d python:3 python b3z.py'
+                sh 'rm -f /nginx/nginx_b3z.conf || true'
+                sh 'cp /var/jenkins_home/workspace/lab-cicd_master/nginx/nginx_b3z.conf /nginx/nginx_b3z.conf'
                 sh 'docker kill -s HUP nginx'
             }
         }
 
        stage('Test') {
             steps {
-                  //sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/test.py /app/teste/test.py'
-                  //sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/app.py /app/teste/app.py'
-                  //sh 'docker run --rm -v ${WORKSPACE}:/app/teste -w /app_python python_app python test.py'
-                     sh 'docker run --rm -v /root/app/teste:/app_python -w /app_python python_app python test.py'
+                   sh 'docker run --rm -v /root/app/teste:/app_python -w /app_python python_app python test.py'
             }
             post {
                  always {
