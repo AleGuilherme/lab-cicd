@@ -8,6 +8,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                   sh 'cp ${WORKSPACE}/app/teste/app_b3z.py /app/teste/app_b3z.py'
+                   sh 'cp ${WORKSPACE}/app/teste/test_b3z.py /app/teste/test_b3z.py'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                   sh 'docker run --rm -v /root/app/teste:/app_b3z_dir -w /app_b3z_dir python_app python test_b3z.py'
+            }
+            post {
+                 always {
+                        junit 'test-reports/*.xml'
+                 }
+            }    
+        }
+        stage('Deploy') {
+            steps {
                 echo "${app_type}"
                 sh 'docker rm -f B3Z-${app_type} || true'
                 sh 'rm -f /app/${app_type}/app_b3z.py || true'
@@ -18,18 +35,5 @@ pipeline {
                 sh 'docker kill -s HUP nginx'
             }
         }
-
-       stage('Test') {
-            steps {
-                   sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/app_b3z.py /app/teste/app_b3z.py'
-                   sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/test_b3z.py /app/teste/test_b3z.py'
-                   sh 'docker run --rm -v /root/app/teste:/app_b3z_dir -w /app_b3z_dir python_app python test_b3z.py'
-            }
-            post {
-                 always {
-                        junit 'test-reports/*.xml'
-                 }
-            }    
-       }
     }
  }
