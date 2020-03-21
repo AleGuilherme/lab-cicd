@@ -16,7 +16,7 @@ def startup_equipe():
 
 @app.route('/startup/apptype') # rota APP TYPE-BlueGren
 def startup_apptype():
-    return 'B3Z GREEN'
+    return 'B3ZGREEN'
 
 @app.route('/startup/<rota_dinamica>') # rota dinamica
 def startup_din(rota_dinamica):

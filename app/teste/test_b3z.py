@@ -26,7 +26,7 @@ class TestB3Z(unittest.TestCase):
     def test_startup_apptype(self):
         rv = self.app_b3z.get('/startup/apptype')
         self.assertEqual(rv.status, '200 OK')
-        self.assertIn(rv.data, b'BZ3 BLUE GREEN')
+        self.assertIn(rv.data, b'B3ZBLUE B3ZGREEN')
 
     def test_startup_din(self):
         name = '<rota_dinamica>'
