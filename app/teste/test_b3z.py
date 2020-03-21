@@ -23,6 +23,11 @@ class TestB3Z(unittest.TestCase):
         self.assertEqual(rv.status, '200 OK')
         self.assertEqual(rv.data, b'ALEXANDRE GUILHERME<br>ADRIANO CESAR MARTINS<br>VITOR CHALUPPE RADI<br>')
 
+    def test_startup_apptype(self):
+        rv = self.app_b3z.get('/startup/app_type')
+        self.assertEqual(rv.status, '200 OK')
+        self.assertIn(rv.data, b'BZ3 BLUE GREEN')
+
     def test_startup_din(self):
         name = '<rota_dinamica>'
         rv = self.app_b3z.get(f'/startup/{name}')

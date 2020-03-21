@@ -14,6 +14,10 @@ def startup_name():
 def startup_equipe():
     return 'ALEXANDRE GUILHERME<br>ADRIANO CESAR MARTINS<br>VITOR CHALUPPE RADI<br>'
 
+@app.route('/startup/app_type') # rota APP TYPE-BlueGren
+def startup_equipe():
+    return 'B3Z GREEN'
+
 @app.route('/startup/<rota_dinamica>') # rota dinamica
 def startup_din(rota_dinamica):
     return 'Rota dinamica B3Z %s!\n' % rota_dinamica
