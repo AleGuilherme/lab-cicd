@@ -23,7 +23,7 @@ pipeline {
             steps {
                  sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/test.py /app/teste/test.py'
                  sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/app.py /app/teste/app.py'
-                 sh 'docker run --rm -v /root/app/teste/test.py:/usr/local/src/test.py --net=example python_app python /usr/local/src/test.py'
+                 sh 'docker run --rm -w/usr/local/src/ -v /root/app/teste/:/usr/local/src/ --net=example python_app python /usr/local/src/test.py'
             }
             post {
                  always {
