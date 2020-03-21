@@ -21,9 +21,9 @@ pipeline {
 
        stage('Test') {
             steps {
-                  sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/test.py /app/teste/test.py'
-                  sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/app.py /app/teste/app.py'
-                  sh 'docker run --rm -w /usr/local/src/ -v /root/app/teste/:/usr/local/src/ python_app python test.py'
+                  //sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/test.py /app/teste/test.py'
+                  //sh 'cp /var/jenkins_home/workspace/lab-cicd_master/app/teste/app.py /app/teste/app.py'
+                  sh 'docker run --rm -v ${WORKSPACE}:/app/teste -w /app_python python_app python test.py'
             }
             post {
                  always {
