@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment { 
-         app_type = sh (returnStdout: true, script: 'cat BlueGreenControl').trim()
+           app_type = sh (returnStdout: true, script: 'cat BlueGreenControl').trim()
     }
 
     stages {
