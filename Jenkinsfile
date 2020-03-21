@@ -28,10 +28,10 @@ pipeline {
                 echo "${app_type}"
                 sh 'docker rm -f B3Z-${app_type} || true'
                 sh 'rm -f /app/${app_type}/app_b3z.py || true'
-                sh 'sed "s/APPTYPEVAR/${app_type}/g" ${WORKSPACE}/app/${app_type}/app_b3z.py > /app/${app_type}/app_b3z.py'
+                sh 'cp ${WORKSPACE}/app/${app_type}/app_b3z.py > /app/${app_type}/app_b3z.py'
                 sh 'docker run --name B3Z-${app_type} -v /root/app/${app_type}:/app_b3z -w /app_b3z --net=example -d python_app python app_b3z.py'
                 sh 'rm -f /nginx/nginx_b3z.conf || true'
-                sh 'cp ${WORKSPACE}/nginx/nginx_b3z.conf /nginx/nginx_b3z.conf'
+                sh 'sed "s/APPTYPEVAR/${app_type}/g" ${WORKSPACE}/nginx/nginx_b3z.conf > /nginx/nginx_b3z.conf'
                 sh 'docker kill -s HUP nginx'
             }
         }
